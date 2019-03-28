@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-nonroot
+  namespace: mtinny
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: ubuntu-nonroot
+  template:
+    metadata:
+      labels:
+        run: ubuntu-nonroot
+    spec:
+      containers:
+      - image: 
+        name: ubuntu-nonroot
+        volumeMounts:
+        - mountPath: /mnt/mtinny-test
+          name: mtinny-volume
+      volumes:
+      - name: mtinny-volume
+        persistentVolumeClaim:
+          claimName: mtinny-test
+          readOnly: true
+
