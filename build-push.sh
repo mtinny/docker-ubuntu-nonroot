@@ -1,7 +1,7 @@
 #!/bin/bash
 
 repo=mtinny/ubuntu-nonroot
-tag=${tag:-v0.0.2}
+tag=${tag:-v0.0.3}
 
 image=${repo}:${tag}
 limage=${repo}:latest
