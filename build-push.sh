@@ -1,9 +1,13 @@
 #!/bin/bash
 
 repo=mtinny/ubuntu-nonroot
-tag=${tag:-v0.0.1}
+tag=${tag:-v0.0.2}
 
-image="${repo}:${tag}"
+image=${repo}:${tag}
+limage=${repo}:latest
+
 docker build -t ${image} .
 docker push ${image}
 
+docker tag ${image} ${limage}
+docker push ${limage}
